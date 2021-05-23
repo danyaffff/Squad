@@ -22,7 +22,12 @@ struct Squad_DEVApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+//            ProjectView()
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .background(Color.white)
+//                .ignoresSafeArea(edges: .all)
                 .environment(\.colorScheme, .light)
+            
         }
         .windowStyle(HiddenTitleBarWindowStyle())
     }

@@ -22,6 +22,7 @@
 		A58C521B2659EC5600F1C44F /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58C521A2659EC5600F1C44F /* AccountView.swift */; };
 		A58C521D265A2A8C00F1C44F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58C521C265A2A8C00F1C44F /* Network.swift */; };
 		A58FA666265A355600532FA9 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = A58FA665265A355600532FA9 /* SwiftyJSON */; };
+		A58FA668265A5CAB00532FA9 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58FA667265A5CAB00532FA9 /* ProjectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		A5440E6B2659C875007D0631 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A58C521A2659EC5600F1C44F /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A58C521C265A2A8C00F1C44F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		A58FA667265A5CAB00532FA9 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				A5440E5326597904007D0631 /* Squad_DEVApp.swift */,
 				A5440E5526597904007D0631 /* ContentView.swift */,
 				A58C521A2659EC5600F1C44F /* AccountView.swift */,
+				A58FA667265A5CAB00532FA9 /* ProjectView.swift */,
 				A5440E6326597ACA007D0631 /* HomeView.swift */,
 				A58C521C265A2A8C00F1C44F /* Network.swift */,
 				A5440E67265985C8007D0631 /* NSTextField+Extensions.swift */,
@@ -186,6 +189,7 @@
 				A5440E5426597904007D0631 /* Squad_DEVApp.swift in Sources */,
 				A5440E68265985C8007D0631 /* NSTextField+Extensions.swift in Sources */,
 				A58C521B2659EC5600F1C44F /* AccountView.swift in Sources */,
+				A58FA668265A5CAB00532FA9 /* ProjectView.swift in Sources */,
 				A5440E6A26598D8A007D0631 /* String+Extensions.swift in Sources */,
 				A5440E66265980AC007D0631 /* Color+Extensions.swift in Sources */,
 			);

@@ -145,12 +145,21 @@ struct AccountView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
-                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
-                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
-                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
-                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
-                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
+                                Project(id: 0, name: "Desktop Chess", description: "Данный проект нацелен на начинающих учеников.\nВыполняется на языке Python с использованием библиотеки PyGame.\nОсновная цель: доработать логику.", complexity: "Легко", rating: 4.9)
+                                
+                                Button(action: {
+                                    print("Поиск других уроков")
+                                }, label: {
+                                    Image(systemName: "plus.circle")
+                                        .resizable()
+                                        .foregroundColor(.ourBlue)
+                                        .frame(width: 30, height: 30)
+                                })
+                                .buttonStyle(PlainButtonStyle())
+                                .padding(.bottom, 40)
+                                .onHover { hovering in
+                                    hovering ? NSCursor.pointingHand.push() : NSCursor.pop()
+                                }
                             }
                         }
                         
@@ -217,9 +226,10 @@ struct AccountView: View {
 }
 
 struct Project: View {
+    var id: Int
     var name: String
     var description: String
-    var difficile: String
+    var complexity: String
     var rating: Double
     
     @State var hovering = false
@@ -242,7 +252,7 @@ struct Project: View {
                 
                 Spacer()
                 
-                Text(description)
+                Text(description[description.startIndex..<description.firstIndex(of: "\n")!])
                     .foregroundColor(.gray)
                     .font(.system(size: 14, weight: .light))
                 
@@ -251,7 +261,7 @@ struct Project: View {
                 HStack {
                     Image("tag")
                     
-                    Text(difficile)
+                    Text(complexity)
                         .foregroundColor(.black)
                         .font(.system(size: 14, weight: .light))
                     
