@@ -16,6 +16,10 @@ struct AccountView: View {
     @State var area = ""
     @State var level = ""
     
+    @Binding var title: String
+    @Binding var description: String
+    @Binding var rating: Double
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
@@ -145,7 +149,7 @@ struct AccountView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                Project(id: 0, name: "Desktop Chess", description: "Данный проект нацелен на начинающих учеников.\nВыполняется на языке Python с использованием библиотеки PyGame.\nОсновная цель: доработать логику.", complexity: "Легко", rating: 4.9)
+                                Project(stage: $stage, id: 0, name: "Desktop Chess", description: "Данный проект нацелен на начинающих учеников.\nВыполняется на языке Python с использованием библиотеки PyGame.\nОсновная цель: доработать логику.", complexity: "Легко", rating: 4.9, title: $title, desc: $description, rat: $rating)
                                 
                                 Button(action: {
                                     print("Поиск других уроков")
@@ -226,6 +230,8 @@ struct AccountView: View {
 }
 
 struct Project: View {
+    @Binding var stage: Int
+    
     var id: Int
     var name: String
     var description: String
@@ -233,6 +239,10 @@ struct Project: View {
     var rating: Double
     
     @State var hovering = false
+    
+    @Binding var title: String
+    @Binding var desc: String
+    @Binding var rat: Double
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
@@ -283,6 +293,15 @@ struct Project: View {
         .onHover { hovering in
             withAnimation {
                 self.hovering = hovering
+            }
+        }
+        .onTapGesture {
+            title = name
+            desc = description
+            rat = rating
+            
+            withAnimation {
+                stage = 9
             }
         }
     }
@@ -375,8 +394,7 @@ struct Certificate: View {
                     
                     Spacer()
                     
-                    HStack
-                    {
+                    HStack {
                         Spacer()
                         
                         Image("star")
@@ -405,11 +423,11 @@ struct Certificate: View {
     }
 }
 
-struct AccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountView(stage: .constant(1))
-    }
-}
+//struct AccountView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AccountView(stage: .constant(1))
+//    }
+//}
 
 extension DateFormatter {
     static let formatter: DateFormatter = {
