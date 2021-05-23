@@ -18,38 +18,9 @@ struct AccountView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: -30) {
-                HStack {
-                    Image("icon")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                    
-                    Text("Squad_{DEV}")
-                        .foregroundColor(.ourBlue)
-                        .font(.system(size: 24, weight: .light))
-                        .padding(.bottom, 10)
-                    
-                    Spacer()
-                }
-                .padding()
-                .padding(.top, 20)
-                
-                
-                VStack {
+            VStack(alignment: .leading) {
+                HStack(alignment: .top) {
                     HStack {
-                        Button(action: {
-                            print("Settings")
-                        }, label: {
-                            Image(systemName: "gearshape")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.ourBlue)
-                        })
-                        .buttonStyle(PlainButtonStyle())
-                        .onHover { hovering in
-                            hovering ? NSCursor.pointingHand.push() : NSCursor.pop()
-                        }
-                        
                         Image(systemName: "person.crop.circle.fill")
                             .resizable()
                             .frame(width: 60, height: 60)
@@ -72,10 +43,23 @@ struct AccountView: View {
                                 Text("\(area)")
                                     .foregroundColor(.ourBlue)
                                     .font(.system(size: 20, weight: .light))
+                                
+                                Button(action: {
+                                    print("Settings")
+                                }, label: {
+                                    Image(systemName: "gearshape")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.ourBlue)
+                                })
+                                .buttonStyle(PlainButtonStyle())
+                                .onHover { hovering in
+                                    hovering ? NSCursor.pointingHand.push() : NSCursor.pop()
+                                }
                             }
                             
                             HStack(spacing: 20) {
-                                HStack(spacing: 2) {
+                                HStack(spacing: 4) {
                                     Text("Уровень:")
                                         .foregroundColor(.gray)
                                         .font(.system(size: 12, weight: .light))
@@ -85,7 +69,7 @@ struct AccountView: View {
                                         .font(.system(size: 12, weight: .light))
                                 }
                                 
-                                HStack(spacing: 2) {
+                                HStack(spacing: 4) {
                                     Text("Рейтинг:")
                                         .foregroundColor(.gray)
                                         .font(.system(size: 12, weight: .light))
@@ -95,7 +79,7 @@ struct AccountView: View {
                                         .font(.system(size: 12, weight: .light))
                                 }
                                 
-                                HStack(spacing: 2) {
+                                HStack(spacing: 4) {
                                     Text("Подписка:")
                                         .foregroundColor(.gray)
                                         .font(.system(size: 12, weight: .light))
@@ -126,62 +110,89 @@ struct AccountView: View {
                             }
                         }
                     }
+                    .padding(20)
+                    .padding(.top)
                     
-                    HStack(alignment: .top, spacing: 0) {
-                        VStack(alignment: .leading) {
-                            Title(text: "Мои проекты")
-                            
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
-                                    Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
-                                    Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
-                                    Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
-                                    Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
-                                    Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
-                                }
-                            }
-                            
-                            Title(text: "Активность")
-                            
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.ourBlue, lineWidth: 1)
-                                .foregroundColor(.clear)
-                                .frame(height: 120)
-                        }
-                        .frame(width: geometry.size.width / 2 - 140)
-                        .padding(.leading, 40)
-                        
-                        Spacer()
-                        
-                        VStack(alignment: .leading) {
-                            Title(text: "Достижения")
-                            
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    Acievement(image: "terminal", step: 1, description: "Описание терминал")
-                                    Acievement(image: "trello", step: 2, description: "Описание трелло")
-                                    Acievement(image: "git", step: 3, description: "Описание гит")
-                                }
-                            }
-                            
-                            Title(text: "Сертификаты")
-                            
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    Certificate(image: "terminal", name: "Terminal", rating: 1, date: Date())
-                                    Certificate(image: "trello", name: "Trello", rating: 1.5, date: Date())
-                                    Certificate(image: "git", name: "Git", rating: 2, date: Date())
-                                }
-                            }
-                        }
-                        .frame(width: geometry.size.width / 2 - 80)
-                        .padding(.trailing, 40)
-                        
-                    }
-                    .padding(.top, 30)
                     Spacer()
+                    
+                    ZStack(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.ourBlue)
+                            .cornerRadius(20)
+                            .frame(width: 250, height: 100)
+                        
+                        HStack {
+                            Image("icon")
+                                .resizable()
+                                .renderingMode(.template)
+                                .foregroundColor(.white)
+                                .frame(width: 50, height: 50)
+                            
+                            Text("Squad_{DEV}")
+                                .foregroundColor(.white)
+                                .font(.system(size: 20, weight: .light))
+                        }
+                        .padding(.top, 33)
+                        .padding(.trailing, 45)
+                    }
+                    .padding([.top, .trailing], -20)
                 }
+                
+                
+                HStack(alignment: .top, spacing: 0) {
+                    VStack(alignment: .leading) {
+                        Title(text: "Мои проекты")
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
+                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
+                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
+                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
+                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
+                                Project(name: "Chess", description: "Chess Description", difficile: "Легко", rating: 3.5)
+                            }
+                        }
+                        
+                        Title(text: "Активность")
+                        
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.ourBlue, lineWidth: 1)
+                            .foregroundColor(.clear)
+                            .frame(height: 120)
+                    }
+                    .frame(width: geometry.size.width / 2 - 140)
+                    .padding(.leading, 40)
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .leading) {
+                        Title(text: "Достижения")
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                Acievement(image: "terminal", step: 1, description: "Описание терминал")
+                                Acievement(image: "trello", step: 2, description: "Описание трелло")
+                                Acievement(image: "git", step: 3, description: "Описание гит")
+                            }
+                        }
+                        
+                        Title(text: "Сертификаты")
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                Certificate(image: "terminal", name: "Terminal", rating: 1, date: Date())
+                                Certificate(image: "trello", name: "Trello", rating: 1.5, date: Date())
+                                Certificate(image: "git", name: "Git", rating: 2, date: Date())
+                            }
+                        }
+                    }
+                    .frame(width: geometry.size.width / 2 - 80)
+                    .padding(.trailing, 40)
+                    
+                }
+//                .padding(.top, 30)
+                Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.white)
@@ -336,29 +347,38 @@ struct Certificate: View {
                     .stroke(Color.ourBlue, lineWidth: 1)
                     .foregroundColor(.clear)
                 
-                HStack(spacing: 3) {
-                    Image(image)
-                        .resizable()
-                        .renderingMode(.template)
-                        .foregroundColor(.ourBlue)
-                        .frame(width: 18, height: 18)
+                VStack {
+                    Spacer()
                     
-                    Text(name)
-                        .foregroundColor(.black)
-                        .font(.system(size: 14, weight: .light))
-                }
-                
-                Spacer()
-                
-                HStack(spacing: 3) {
-                    Image("star")
+                    HStack(spacing: 3) {
+                        Image(image)
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(.ourBlue)
+                            .frame(width: 18, height: 18)
+                        
+                        Text(name)
+                            .foregroundColor(.black)
+                            .font(.system(size: 14, weight: .light))
+                    }
+                    .padding(.top, 30)
                     
-                    Text(String(format: "%.1f", rating))
-                        .foregroundColor(.black)
-                        .font(.system(size: 14, weight: .light))
+                    Spacer()
+                    
+                    HStack
+                    {
+                        Spacer()
+                        
+                        Image("star")
+                        
+                        Text(String(format: "%.1f", rating))
+                            .foregroundColor(.black)
+                            .font(.system(size: 14, weight: .light))
+                    }
+                    .padding(12)
                 }
             }
-            //            .frame(width: 180, height: 113)
+            .frame(width: 180, height: 113)
             .padding(.bottom, 8)
             
             Text("Получен " + DateFormatter.formatter.string(from: date))
